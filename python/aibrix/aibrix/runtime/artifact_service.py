@@ -164,7 +164,7 @@ class ArtifactDelegationService:
         Download artifact from remote location.
 
         Args:
-            artifact_url: Source URL (s3://, gs://, huggingface://, tos://, etc.)
+            artifact_url: Source URL (s3://, gs://, huggingface://, hf://, tos://, etc.)
             lora_name: Name of the LoRA adapter
             credentials: Optional credentials dict
 

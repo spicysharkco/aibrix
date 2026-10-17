@@ -468,7 +468,7 @@ class TOSArtifactDownloader(ArtifactDownloader):
 
 
 class HuggingFaceArtifactDownloader(ArtifactDownloader):
-    """Download artifacts from HuggingFace Hub."""
+    """Download artifacts from HuggingFace Hub (huggingface:// or hf://)."""
 
     async def download(
         self, source_url: str, local_path: str, credentials: Optional[Dict] = None
@@ -662,12 +662,13 @@ def get_downloader(source_url: str) -> ArtifactDownloader:
     parsed = urlparse(source_url)
     scheme = parsed.scheme.lower()
 
+    hf = HuggingFaceArtifactDownloader()
     downloader_map = {
         "s3": S3ArtifactDownloader(),
         "gcs": GCSArtifactDownloader(),
         "tos": TOSArtifactDownloader(),
-        "huggingface": HuggingFaceArtifactDownloader(),
-        "hf": HuggingFaceArtifactDownloader(),
+        "huggingface": hf,
+        "hf": hf,
         "http": HTTPArtifactDownloader(),
         "https": HTTPArtifactDownloader(),
     }

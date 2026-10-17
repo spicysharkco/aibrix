@@ -76,7 +76,7 @@ class LoadLoraAdapterRuntimeRequest(NoExtraBaseModel):
     """Request to load LoRA adapter with artifact delegation via runtime."""
 
     lora_name: str
-    artifact_url: str  # Original URL (s3://, gs://, huggingface://, etc.)
+    artifact_url: str  # Original URL (s3://, gs://, huggingface://, hf://, etc.)
     credentials_secret: Optional[str] = Field(
         default=None, description="Kubernetes secret name containing credentials"
     )
